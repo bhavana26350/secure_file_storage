@@ -1,6 +1,5 @@
 # Hardened Cloud Infrastructure For Retail Data
 
-**Final Year Project**
 
 ## Overview
 RetailSafe is a secure, enterprise-grade Python Desktop Application designed to protect sensitive retail data (e.g., customer PII, sales reports) using advanced cryptographic standards. This demonstrates the critical importance of "Data at Rest" security in the retail and e-commerce industries.
