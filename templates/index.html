@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetailSafe - Enterprise File Storage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="background-anim"></div>
+    
+    <div class="glass-container">
+        <header>
+            <div class="logo">🛡️ RetailSafe</div>
+            <p>Enterprise "Data at Rest" Cryptography Server</p>
+        </header>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <div class="alert-box">
+              {% for category, message in messages %}
+                <div class="alert {{ category }}">{{ message }}</div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+
+        <form action="/process" method="POST" enctype="multipart/form-data" id="cryptoForm">
+            <div class="upload-area" id="uploadFileArea" onclick="document.getElementById('fileInput').click()">
+                <div class="upload-icon">📁</div>
+                <div class="upload-text" id="uploadText">Click or Drag to Upload Retail Data</div>
+                <input type="file" name="file" id="fileInput" required onchange="updateFileName()">
+            </div>
+
+            <div class="input-group">
+                <label for="password">Encryption/Decryption Password</label>
+                <input type="password" name="password" id="password" required placeholder="Enter secure password...">
+            </div>
+
+            <div class="action-buttons">
+                <button type="submit" name="action" value="encrypt" class="btn btn-encrypt">
+                    🔒 Encrypt & Shred
+                </button>
+                <button type="submit" name="action" value="decrypt" class="btn btn-decrypt">
+                    🔓 Decrypt
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function updateFileName() {
+            const fileInput = document.getElementById('fileInput');
+            const uploadText = document.getElementById('uploadText');
+            if (fileInput.files.length > 0) {
+                uploadText.textContent = "Selected: " + fileInput.files[0].name;
+                uploadText.style.color = "#4ade80";
+            }
+        }
+    </script>
+</body>
+</html>
