@@ -1,4 +1,4 @@
-# RetailSafe - Secure File Storage for Retail
+# Hardened Cloud Infrastructure For Retail Data
 
 **Final Year Project**
 
